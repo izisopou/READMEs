@@ -1,4 +1,4 @@
-Firstly we would like to send you a few checks that we also do to see if the fits behave well (regardless of the method used for the limit calculation). More specifically, we plot the ΔNLL surface as a function of r to see if it is smooth without discontinuities and the minimum agrees with the value taken from the fitDiagnostics. To do this you need to run the following command:
+A few checks that we do to see if the fits behave well (regardless of the method used for the limit calculation). More specifically, we plot the ΔNLL surface as a function of r to see if it is smooth without discontinuities and the minimum agrees with the value taken from the fitDiagnostics. To do this you need to run the following command:
 
 (1)
 combine -M MultiDimFit card_combined.txt -n .name --rMin 0. --rMax 3 --algo grid --points 200 --cminDefaultMinimizerStrategy 0 --saveNLL --X-rtd REMOVE_CONSTANT_ZERO_POINT=1 --robustFit 1 --trackParameters rgx{.*} --saveSpecifiedIndex pdf_index 
