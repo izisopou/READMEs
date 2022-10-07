@@ -1,5 +1,3 @@
-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
-
 To push in a different branch:
 
 git branch <name_of_new_branch>    -> creates the new branch
