@@ -7,16 +7,17 @@ cd in a CMSSW
 
 CMSSW_10_2_X for Run2 pre-Legacy data
 CMSSW_10_6_X for Run2 Legact data (UL)
-CMSSW_12_3_6 for Run3 data
+CMSSW_12_4_X for Run3 data
 
 cd CMSSW_X_X_X/src
+mkdir edmPickEvents
+cd edmPickEvents/
 cmsenv
 voms-proxy-init -voms cms
 
 edmPickEvents.py "/JetHT/Run2017F-17Nov2017-v1/MINIAOD" 305814:610:971086788 --crab
 
 where /JetHT/Run2017F-17Nov2017-v1/MINIAOD is the dataset and 305814:610:971086788 is the run:lumi:event of the event you want to pick.
-The dataset that contains the second 4jet event (315721:151:200841184) is: /JetHT/Run2018A-17Sep2018-v1/MINIAOD
 
 If you want the output root file to have more than one event then do:
 
@@ -42,11 +43,17 @@ Check the status of the jobs with:
 
 crab status crab_pickevents_XXXX_YYYY/crab_pickEvents/
 
-When jobs are finished do:
+When jobs are in finished status do:
 
 crab getoutput crab_pickevents_XXXX_YYYY/crab_pickEvents/ --checksum=no 
 
 The output root file to be used as input for fireworks is located in the folder crab_pickevents_XXXX_YYYY/crab_pickEvents/results/
+
+This output root file can also be used to display the event in the WEB interface. Move the root file to a folder inside the Exotica EOS and go to:
+
+https://fireworks.cern.ch/cmsShowWeb/revetor.pl
+
+Enter the location of the file and press "Load File EOS". This will create the event display.
 
 
 
