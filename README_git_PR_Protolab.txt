@@ -25,4 +25,4 @@ Now that your forked repo has all the changes you want, go to your forked repo i
 
 
 
-Note: The same procedure applies for github (I think), but there every time you do a git push or pull and will ask you for your username and password, the password should be a github token, instead of your actual password. To get a github token, go to the github site, click on your profile on the top right, click "settings", click "developer settings", click "personal access token->Tokens(classic)" and then click "generate new token" and choose which priviledges you want to have with this token and how long will it last.
+Note: The same procedure applies for github, but there every time you do a git push or pull and will ask you for your username and password, the password should be a github token, instead of your actual password. To get a github token, go to the github site, click on your profile on the top right, click "settings", click "developer settings", click "personal access token->Tokens(classic)" and then click "generate new token" and choose which priviledges you want to have with this token and how long will it last.
