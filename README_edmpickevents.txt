@@ -1,7 +1,7 @@
 
 ********* Instructions on how to run pickevents *********
 
-In order to create a MiniAOD root file (to be used as input for fireworks) do as follows:
+In order to create a MiniAOD (or AOD) root file (to be used as input for fireworks) do as follows:
 
 cd in a CMSSW 
 
