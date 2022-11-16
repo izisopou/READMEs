@@ -6,7 +6,7 @@ In order to create a MiniAOD (or AOD) root file (to be used as input for firewor
 cd in a CMSSW 
 
 CMSSW_10_2_X for Run2 pre-Legacy data
-CMSSW_10_6_X for Run2 Legact data (UL)
+CMSSW_10_6_X for Run2 Legacy data (UL)
 CMSSW_12_4_X for Run3 data
 
 cd CMSSW_X_X_X/src
