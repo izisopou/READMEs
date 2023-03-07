@@ -1,0 +1,33 @@
+Go to https://ca.cern.ch/ca/
+Click on "New Grid User certificate"
+Create a new certificate adding a password and click "Get Grid User certificate" 
+This will download a myCertificate.p12 file.
+
+To add it to your browser (instructions will be for Firefox but similar steps can be followed for any browser):
+Click "Settings"
+Click "Privacy & Security"
+Click "View cerificates"
+If you have any older certificates delete them and then click "Import". Choose the myCertificate.p12 file and add the password you have given.
+This allows you to have access to DAS and similar CMS sites from now on.
+
+To add it to LXPLUS:
+cd $HOME/.globus/
+Inside this directory there should be a usercert.pem and a userkey.pem file if you previously had an older certificate. Otherwise it will probably be empty.
+If the usercert.pem, userkey.pem exist delete them.
+Put the myCertificate.p12 file inside this directory and then do:
+
+openssl pkcs12 -in myCertificate.p12 -clcerts -nokeys -out $HOME/.globus/usercert.pem
+openssl pkcs12 -in myCertificate.p12 -nocerts -out $HOME/.globus/userkey.pem
+
+You will be asked to insert your passwords in the commands above.
+
+With the above commands new usercert.pem, userkey.pem files will be created.
+
+Then do:
+
+chmod 600 userkey.pem
+chmod 600 usercert.pem
+
+Delete the myCertificate.p12 file to avoid security issues.
+
+This allows you to do "voms-proxy-init -voms cms" and be able to run jobs on grid in LXPLUS.
