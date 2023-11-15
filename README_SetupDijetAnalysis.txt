@@ -5,8 +5,8 @@
 
 =========== Setup CMSSW ===========
 
-cmsrel CMSSW_13_0_3
-cd CMSSW_13_0_3/src
+cmsrel CMSSW_13_0_13
+cd CMSSW_13_0_13/src
 cmsenv
 git clone -b Run3_130X https://github.com/CMSDIJET/DijetRootTreeMaker.git CMSDIJET/DijetRootTreeMaker
 scram b -j 8
