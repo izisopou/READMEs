@@ -24,3 +24,9 @@ Then, when you are inside the screen and you want to kill it, just press: Ctr+D.
 Otherwise, you can kill it without opening it by doing in the "normal" lxplus environment:
 
 screen -XS <screen_name> quit
+
+To kill all screen sessions in an lxplus:
+
+screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
+
+
