@@ -6,7 +6,7 @@ Login to lxplus9 and create a folder. Inside it:
 cmsrel CMSSW_14_1_0_pre4
 cd CMSSW_14_1_0_pre4/src
 cmsenv
-git clone https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
+git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit   
 git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
 
@@ -39,9 +39,9 @@ cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
 scramv1 b clean; scramv1 b
 
 
-From /afs/cern.ch/user/i/izisopou/public/Fit_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
 
-From /afs/cern.ch/user/i/izisopou/public/Fit_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
 
 
 
