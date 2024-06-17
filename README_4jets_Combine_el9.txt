@@ -16,9 +16,10 @@ git fetch origin
 git checkout v10.0.0
 scramv1 b clean; scramv1 b
 
-git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
-scram b CombineHarvester
-
+///////Skip for now////////////////////////////////////////////////////////////////
+///git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+///scram b CombineHarvester
+//////////////////////////////////////////////////////////////////////////////////
 
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes/fit_functions/ take RooDijet5ParamBinPdf.cc, RooModDijet5ParamBinPdf.cc and RooAtlas5ParamBinPdf.cc and copy them inside HiggsAnalysis/CombinedLimit/src in your setup.
 
@@ -36,6 +37,7 @@ In the HiggsAnalysis/CombinedLimit/src folder modify the following files:
                                                         <class name="RooAtlas5ParamBinPdf" /> 
                                                         <class name="RooModDijet5ParamBinPdf" /> 
 
+
 cd back to $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit and make a clean build:
  
 cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit 
@@ -44,8 +46,11 @@ scramv1 b clean; scramv1 b
 
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
 
-From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Config.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Utils.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
 
+
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
 
 
 
