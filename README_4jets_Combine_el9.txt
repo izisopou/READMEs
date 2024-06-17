@@ -53,6 +53,13 @@ From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Utils.py and copy it
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
 
 
+MAKE SURE that there are no __init__.py files in the directories:
+$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/
+$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
+$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
+These __init__.py files are not needed in python3 anymore.
+
+
 
 From now on, main work directory is the $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
 
@@ -64,11 +71,11 @@ From now on, main work directory is the $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAn
 
 For alpha bin = 1 up to 13:
 
-python python/BinnedFit_4jets.py -c config/Configfiles_13_slices_dijet_only/run2_fourjet_alpha"$bin_No"_dijet_only_upto10072.config -l 137600 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root -b PFDijetRun2_4J_alphabin"$bin_No" -d output/Wide_Resonances_RunII_Initial_Request/BkgOnlyFits/Dijet-3p/ --fit-spectrum
+python3 python/BinnedFit_4jets.py -c config/Configfiles_13_slices_dijet_only/run2_fourjet_alpha"$bin_No"_dijet_only_upto10072.config -l 137600 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root -b PFDijetRun2_4J_alphabin"$bin_No" -d output/Wide_Resonances_RunII_Initial_Request/BkgOnlyFits/Dijet-3p/ --fit-spectrum
 
-python python/BinnedFit_4jets.py -c config/Configfiles_13_slices_atlas_only/run2_fourjet_alpha"$bin_No"_atlas_only_upto10072.config -l 137600 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root -b PFDijetRun2_4J_alphabin"$bin_No" -d output/Wide_Resonances_RunII_Initial_Request/BkgOnlyFits/Atlas-3p/ --fit-spectrum
+python3 python/BinnedFit_4jets.py -c config/Configfiles_13_slices_atlas_only/run2_fourjet_alpha"$bin_No"_atlas_only_upto10072.config -l 137600 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root -b PFDijetRun2_4J_alphabin"$bin_No" -d output/Wide_Resonances_RunII_Initial_Request/BkgOnlyFits/Atlas-3p/ --fit-spectrum
 
-python python/BinnedFit_4jets.py -c config/Configfiles_13_slices_moddijet_only/run2_fourjet_alpha"$bin_No"_moddijet_only_upto10072.config -l 137600 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root -b PFDijetRun2_4J_alphabin"$bin_No" -d output/Wide_Resonances_RunII_Initial_Request/BkgOnlyFits/Moddijet-3p/ --fit-spectrum
+python3 python/BinnedFit_4jets.py -c config/Configfiles_13_slices_moddijet_only/run2_fourjet_alpha"$bin_No"_moddijet_only_upto10072.config -l 137600 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root -b PFDijetRun2_4J_alphabin"$bin_No" -d output/Wide_Resonances_RunII_Initial_Request/BkgOnlyFits/Moddijet-3p/ --fit-spectrum
 
 
 
@@ -77,7 +84,7 @@ python python/BinnedFit_4jets.py -c config/Configfiles_13_slices_moddijet_only/r
 
 For alpha bin = 1 up to 13:
 
-python python/WriteDataCard_4jets_envelope.py -b PFDijetRun2_4J_alphabin"$bin_No" -c config/Configfiles_13_slices_Envelope_3_functions/run2_fourjet_alpha"$bin_No"_multipdf_3_func_upto10072.config -m W-0p0043_Suu --model2 Chi --mass 8400 --mass2 2100 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jesUp /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jesDown /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jerUp /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jerDown /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root -d output/Wide_Resonances_RunII_Initial_Request/datacards_alpha0p25_refxsec0p0001pb/ --xsec $fraction --lumi 137600 --multi
+python3 python/WriteDataCard_4jets_envelope.py -b PFDijetRun2_4J_alphabin"$bin_No" -c config/Configfiles_13_slices_Envelope_3_functions/run2_fourjet_alpha"$bin_No"_multipdf_3_func_upto10072.config -m W-0p0043_Suu --model2 Chi --mass 8400 --mass2 2100 /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/data/HISTOS_4J_Alldata_SR_alphabin"$bin_No".root /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jesUp /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jesDown /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jerUp /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root --jerDown /eos/user/i/izisopou/4jets_fits_run2andrun3/CMSSW_10_2_13/src/CMSDIJET/DijetRootTreeAnalyzer/inputs/run2/signal/ResonanceShapes_NOMINAL_Suu-Diquark_W-0p0043_S-8400_chi-2100_alphabin"$bin_No".root -d output/Wide_Resonances_RunII_Initial_Request/datacards_alpha0p25_refxsec0p0001pb/ --xsec $fraction --lumi 137600 --multi
 
 
 
@@ -134,7 +141,7 @@ combine -M MultiDimFit output/Wide_Resonances_RunII_Initial_Request/datacards_al
 
 ********** Plot DNLL surfaces **********
 
-python plot1DScan.py output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p0043_8400_2100_Envelope.MultiDimFit.mH120.root -o scan_DNLL_vs_r_diffWidths_8400_2100 --main-color 1 --main-label "#Gamma/M = 0.43 %" --others output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p015_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 1.5 %":633 output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p05_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 5 %":597 output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p07_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 7 %":801 output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p1_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 10 %":880 --y-max 15 --y-cut 15 --logo-sub "Preliminary"
+python3 plot1DScan.py output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p0043_8400_2100_Envelope.MultiDimFit.mH120.root -o scan_DNLL_vs_r_diffWidths_8400_2100 --main-color 1 --main-label "#Gamma/M = 0.43 %" --others output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p015_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 1.5 %":633 output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p05_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 5 %":597 output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p07_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 7 %":801 output/Wide_Resonances_RunII_Initial_Request/combine_rootfiles/MultiDimFit/higgsCombine_W-0p1_8400_2100_Envelope.MultiDimFit.mH120.root:"#Gamma/M = 10 %":880 --y-max 15 --y-cut 15 --logo-sub "Preliminary"
 
 
 
@@ -182,7 +189,7 @@ OR
 
 local script:
 
-python plotGof.py gof_CMSplusATLASpseudodataset_W-0p015_9000_2250.json --statistic saturated --mass 120.0 -o gof_CMSplusATLASpseudodataset_W-0p015_9000_2250 --title-right="M(S) = 9.0 TeV, M(#chi) = 2.25 TeV, Width = 1.5 %" --cms-sub="Preliminary" --legend="CMS + ATLAS pseudo-dataset" --x-title="Goodness of fit" --y-title="Number of toys"
+python3 plotGof.py gof_CMSplusATLASpseudodataset_W-0p015_9000_2250.json --statistic saturated --mass 120.0 -o gof_CMSplusATLASpseudodataset_W-0p015_9000_2250 --title-right="M(S) = 9.0 TeV, M(#chi) = 2.25 TeV, Width = 1.5 %" --cms-sub="Preliminary" --legend="CMS + ATLAS pseudo-dataset" --x-title="Goodness of fit" --y-title="Number of toys"
 
 
 
