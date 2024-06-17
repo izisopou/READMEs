@@ -6,15 +6,18 @@ Login to lxplus9 and create a folder. Inside it:
 cmsrel CMSSW_14_1_0_pre4
 cd CMSSW_14_1_0_pre4/src
 cmsenv
+
 git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
-git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit   
-git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+scram b -j 8
 
-scram b CombineHarvester
-
+git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit 
 cd HiggsAnalysis/CombinedLimit
+git fetch origin
+git checkout v10.0.0
 scramv1 b clean; scramv1 b
 
+git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+scram b CombineHarvester
 
 
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes/fit_functions/ take RooDijet5ParamBinPdf.cc, RooModDijet5ParamBinPdf.cc and RooAtlas5ParamBinPdf.cc and copy them inside HiggsAnalysis/CombinedLimit/src in your setup.
