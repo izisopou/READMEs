@@ -44,7 +44,7 @@ cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
 scramv1 b clean; scramv1 b
 
 
-From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py, GetCombine_final.py, Plot1DLimit_final.py and Plot1DSignificance_final.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
 
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Config.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Utils.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
