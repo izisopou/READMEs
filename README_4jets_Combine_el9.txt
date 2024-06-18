@@ -218,7 +218,7 @@ h->Write()
 
 ********** Plot significance vs mass **********
 
-python3 python/GetCombine_with_HybridNew_final.py -d output/Wide_Resonances_Run2_Final/combine_rootfiles_alpha0p25/significances/ -m qq --mass range\(2000,11000,100\) --chi range\(500,3000,25\) -b PFDijetRun2 --xsec 0.01 -l 137.6 --toys --asymp_plus_HybridNew 11000 --alpha_true 0.25 --signif --width 0.015
+python3 python/GetCombine_final.py -d output/Wide_Resonances_Run2_Final/combine_rootfiles_alpha0p25/significances/ -m qq --mass range\(2000,11000,100\) --chi range\(500,3000,25\) -b PFDijetRun2 --xsec 0.01 -l 137.6 --toys --asymp_plus_HybridNew 11000 --alpha_true 0.25 --signif --width 0.015
 
 Explanation: --toys is for HybridNew method, --asymp_plus_HybridNew 11000 means that it takes the HybridNew files instead of the Asymptotic ones for mass>11000 (here we have put 11000 so that all mass points are Asymptotic)
 
@@ -227,7 +227,7 @@ python3 python/Plot1DSignificance_final.py -d output/Wide_Resonances_Run2_Final/
 
 ********** Plot limits vs mass **********
 
-python3 python/GetCombine_with_HybridNew_final.py -d output/Wide_Resonances_Run2_Final/combine_rootfiles_alpha0p25/limits/ -m qq --mass range\(2000,11000,100\) --chi range\(500,3000,25\) -b PFDijetRun2 --xsec 0.01 -l 137.6 --toys --asymp_plus_HybridNew 11000 --alpha_true 0.25 --width 0.015
+python3 python/GetCombine_final.py -d output/Wide_Resonances_Run2_Final/combine_rootfiles_alpha0p25/limits/ -m qq --mass range\(2000,11000,100\) --chi range\(500,3000,25\) -b PFDijetRun2 --xsec 0.01 -l 137.6 --toys --asymp_plus_HybridNew 11000 --alpha_true 0.25 --width 0.015
 
 Explanation: --toys is for HybridNew method, --asymp_plus_HybridNew 11000 means that it takes the HybridNew files instead of the Asymptotic ones for mass>11000 (here we have put 11000 so that all mass points are Asymptotic)
 
