@@ -8,6 +8,7 @@ cd CMSSW_14_1_0_pre4/src
 cmsenv
 
 git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
+(or git clone -b Run3 https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer if you are working on the dijet or other analysis)
 scram b -j 8
 
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit 
