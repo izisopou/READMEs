@@ -7,20 +7,35 @@ cmsrel CMSSW_14_1_0_pre4
 cd CMSSW_14_1_0_pre4/src
 cmsenv
 
+============ Git clone CMSDIJET/DijetRootTreeAnalyzer ============ 
+
 git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
 (or git clone -b Run3 https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer if you are working on the dijet or other analysis)
 scram b -j 8
 
+The scripts below should already be in the 'PairedDijetAnalysis' branch, but if you use another branch copy them to your directory:
+
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py, GetCombine_final.py, Plot1DLimit_final.py and Plot1DSignificance_final.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
+
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Config.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Utils.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
+
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer 
+
+MAKE SURE that there are no __init__.py files in the directories:
+$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/
+$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
+$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
+These __init__.py files are not needed in python3 anymore.
+
+
+============ Git clone HiggsAnalysis/CombinedLimit ============ 
+
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit 
 cd HiggsAnalysis/CombinedLimit
 git fetch origin
-git checkout v10.0.0
+git checkout v10.0.2
 scramv1 b clean; scramv1 b
-
-///////Skip for now////////////////////////////////////////////////////////////////
-///git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
-///scram b CombineHarvester
-//////////////////////////////////////////////////////////////////////////////////
 
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes/fit_functions/ take RooDijet5ParamBinPdf.cc, RooModDijet5ParamBinPdf.cc and RooAtlas5ParamBinPdf.cc and copy them inside HiggsAnalysis/CombinedLimit/src in your setup.
 
@@ -45,21 +60,34 @@ cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
 scramv1 b clean; scramv1 b
 
 
-From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take BinnedFit_4jets.py, WriteDataCard_4jets.py, WriteDataCard_4jets_envelope.py, GetCombine_final.py, Plot1DLimit_final.py and Plot1DSignificance_final.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python
+============ Git clone HiggsAnalysis/CombinedLimit ============
 
-From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Config.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
-From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take Utils.py and copy it inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
+cd $CMSSW_BASE/src/
+git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+cd CombineHarvester/
+git fetch origin
+git checkout v3.0.0-pre1
+scramv1 b clean; scramv1 b
+
+The following changes concern crab job submissions:
+
+In HiggsAnalysis/CombinedLimit/python/tool_base/crab.py:
+L.15    -> config.JobType.psetName = os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/do_nothing_cfg.py"
+L.17-21 -> config.JobType.inputFiles = [
+    os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/FrameworkJobReport.xml",
+    os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/copyRemoteWorkspace.sh",
+    os.environ["CMSSW_BASE"] + "/bin/" + os.environ["SCRAM_ARCH"] + "/combine",
+]
+
+In HiggsAnalysis/CombinedLimit/python/tool_base/CombineToolBase.py:
+L.381 -> do_nothing_script = open(os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/do_nothing_cfg.py", "w")
 
 
-From /afs/cern.ch/user/i/izisopou/public/Combine_Codes take plot1DScan.py, custom_crab_GOF.py and copy them inside $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
 
+============ End of setting up codes ============
 
-MAKE SURE that there are no __init__.py files in the directories:
-$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/
-$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/framework
-$CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer/python/rootTools
-These __init__.py files are not needed in python3 anymore.
-
+After all the above go to $CMSSW_BASE/src/ and make a clean build:
+scramv1 b clean; scramv1 b
 
 
 From now on, main work directory is the $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
