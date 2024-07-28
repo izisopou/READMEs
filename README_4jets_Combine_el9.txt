@@ -34,7 +34,7 @@ These __init__.py files are not needed in python3 anymore.
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit 
 cd HiggsAnalysis/CombinedLimit
 git fetch origin
-git checkout v10.0.2
+git checkout v10.0.0
 scramv1 b clean; scramv1 b
 
 From /afs/cern.ch/user/i/izisopou/public/Combine_Codes/fit_functions/ take RooDijet5ParamBinPdf.cc, RooModDijet5ParamBinPdf.cc and RooAtlas5ParamBinPdf.cc and copy them inside HiggsAnalysis/CombinedLimit/src in your setup.
