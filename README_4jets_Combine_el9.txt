@@ -283,7 +283,7 @@ Running toys takes a lot of time so you can submit jobs in crab instead:
 
 cmsenv
 voms-proxy-init -voms cms
-source /cvmfs/cms.cern.ch/common/crab-setup.sh
+source /cvmfs/cms.cern.ch/crab3/crab.sh 
 
 combineTool.py -M GoodnessOfFit --algo=saturated -d output/datacards_alpha0p25_refxsec0p01pb/workspace_combined_W-0p0043_8400_2100.root -t 500 -s 123456:123655:1 --toysFrequentist -n _W-0p0043_8400_2100_TOYS --job-mode crab3 --task-name W-0p0043_S-8400_chi-2100 --custom-crab 4jets_scripts/custom_crab.py
 
