@@ -60,7 +60,7 @@ cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
 scramv1 b clean; scramv1 b
 
 
-3) Git clone HiggsAnalysis/CombinedLimit
+3) Git clone CombineHarvester/
 
 cd $CMSSW_BASE/src/
 git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
