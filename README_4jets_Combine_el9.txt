@@ -212,6 +212,18 @@ This prints the significance and also creates a root file where the number is sa
 --rMin 0 and --rMax 5 commands are exactly the same as --setParameterRanges r=0,5  : The min, max values should be the same as the ones you have determined for the asymptotic limits, to make sure you get stable results.
 
 
+================================================ Asymptotic Significance (expected) ================================================
+
+combine -M Significance output/datacards_alpha0p25_refxsec0p01pb/card_combined_W-0p0043_8400_2100.txt -t 200 --expectSignal 1 --rMin 0 --rMax 5 --saveWorkspace --saveToys -n _W-0p0043_8400_2100 --toysFrequentist
+
+EXPLANATION OF COMMAND:
+
+This generates 200 toys in the frequentist way (--toysFrequentist should be added). If -t -1 is given, then an Asimov dataset is generated. Then the toys or Asimov are fitted and the significance for each toy is calculated. 
+--rMin 0 and --rMax 5 commands are exactly the same as --setParameterRanges r=0,5  : The min, max values should be the same as the ones you have determined for the asymptotic limits, to make sure you get stable results.
+--expectSignal 1 : injects signal equal to the ref xsec. If ref xsec = 0.01 pb then it injects 0.01 pb.
+
+Optional: add --setParameters pdf_index=2 --freezeParameters pdf_index to generate and fit from a specifi function. If this is not specified then by default the toys are generated from the function with pdf_index=0.
+
 
 ================================================ Fit Diagnostics ================================================
 
