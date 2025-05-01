@@ -317,7 +317,9 @@ python3 4jets_scripts/plotGof.py gof_W-0p0043_8400_2100.json --statistic saturat
 
 ================================================ Generate toy and create TH1D histogram from it ================================================
 
-combine output/datacards_alpha0p25_refxsec0p01pb/dijet_combine_W-0p0043_Suu_Chi_8400_2100_lumi-137.600_PFDijetRun2_4J_alphabin8.txt -M GenerateOnly -t 10 --expectSignal 0 --saveToys -n _BkgToy_alphabin8 
+combine -M GenerateOnly output/datacards_alpha0p25_refxsec0p01pb/dijet_combine_W-0p0043_Suu_Chi_8400_2100_lumi-137.600_PFDijetRun2_4J_alphabin8.txt -t 10 --expectSignal 0 --saveToys --toysFrequentist -n _BkgToy_alphabin8 
+
+If -t -1 is given, then an Asimov dataset is generated. The option --toysFrequentist should be added.
 
 TFile *f1 = new TFile("higgsCombine_W-0p0043_8400_2100.AsymptoticLimits.mH120.root")
 RooWorkspace* w = (RooWorkspace*)(f1->Get("w"))
