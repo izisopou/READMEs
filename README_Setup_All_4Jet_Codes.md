@@ -1,3 +1,15 @@
+<!-- MarkdownTOC depth=0 -->
+
+- [Setup CMSSW](#setup_cmssw)
+- [Git clone DijetRootTreeMaker (needed for running big trees/ntuples)](#dijetroottreemaker)
+- [Git clone DijetRootTreeAnalyzer (needed for running reduced trees/ntuples)](#dijetroottreeanalyzer)
+- [Git clone HiggsAnalysis/CombinedLimit (needed for running HiggsCombine package to perform fits)](#higgsanalysis_combinedlimit)
+- [Git clone CombineHarvester (needed for running HiggsCombine package with CRAB)](#combineharvester)
+- [Git clone DijetShapeInterpolator (needed for signal interpolation)](#dijetshapeinterpolator)
+
+<a name="setup_cmssw"></a>
+# Setup CMSSW
+
 Login to lxplus9 and create a folder:
 
 ```
@@ -5,7 +17,7 @@ mkdir PairedDijetAnalysis/
 cd ParedDijetAnalysis/
 ```
 
-Download CMSSW:
+Setup CMSSW:
 
 ```
 cmsrel CMSSW_14_1_0_pre4
@@ -13,21 +25,24 @@ cd CMSSW_14_1_0_pre4/src
 cmsenv
 ```
 
-1) Git clone DijetRootTreeMaker -> needed for running big trees/ntuples
+<a name="dijetroottreemaker"></a>
+# Git clone DijetRootTreeMaker (needed for running big trees/ntuples)
 
 ```
 git clone -b Run3_150X https://github.com/CMSDIJET/DijetRootTreeMaker.git CMSDIJET/DijetRootTreeMaker
 scram b -j 8
 ```
 
-2) Git clone DijetRootTreeAnalyzer -> needed for running reduced trees/ntuples
+<a name="dijetroottreeanalyzer"></a>
+# Git clone DijetRootTreeAnalyzer (needed for running reduced trees/ntuples)
 
 ```
 git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
 scram b -j 8
 ```
 
-3) Git clone HiggsAnalysis/CombinedLimit -> needed for running HiggsCombine package to perform fits
+<a name="higgsanalysis_combinedlimit"></a>
+# Git clone HiggsAnalysis/CombinedLimit (needed for running HiggsCombine package to perform fits)
 
 ```
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit 
@@ -65,7 +80,8 @@ scramv1 b clean; scramv1 b
 ```
 
 
-4) Git clone CombineHarvester -> needed for running HiggsCombine package to perform fits
+<a name="combineharvester"></a>
+# Git clone CombineHarvester (needed for running HiggsCombine package with CRAB)
 
 ```
 cd $CMSSW_BASE/src/
@@ -96,3 +112,9 @@ Go back to `$CMSSW_BASE/src`/ and make a clean build:
 scramv1 b clean; scramv1 b
 ```
 
+<a name="dijetshapeinterpolator"></a>
+# Git clone DijetShapeInterpolator (needed for signal interpolation)
+
+```
+git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetShapeInterpolator CMSDIJET/DijetShapeInterpolator
+```
