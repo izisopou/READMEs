@@ -1,0 +1,113 @@
+================================================ Setup CMSSW and codes ================================================
+
+Login to lxplus9 and create a folder. Inside it:
+
+cmsrel CMSSW_14_1_0_pre4
+cd CMSSW_14_1_0_pre4/src
+cmsenv
+
+1) Git clone CMSDIJET/DijetRootTreeAnalyzer:
+
+git clone -b PairedDijetAnalysis https://github.com/CMSDIJET/DijetRootTreeAnalyzer CMSDIJET/DijetRootTreeAnalyzer
+scram b -j 8
+
+2) Git clone HiggsAnalysis/CombinedLimit 
+
+git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit 
+cd HiggsAnalysis/CombinedLimit
+git fetch origin
+git checkout v10.0.0
+scramv1 b clean; scramv1 b
+
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes/fit_functions/ take RooDijet5ParamBinPdf.cc, RooModDijet5ParamBinPdf.cc and RooAtlas5ParamBinPdf.cc and copy them inside HiggsAnalysis/CombinedLimit/src in your setup.
+
+From /afs/cern.ch/user/i/izisopou/public/Combine_Codes/fit_functions/ take RooDijet5ParamBinPdf.h, RooModDijet5ParamBinPdf.h and RooAtlas5ParamBinPdf.h and copy them inside HiggsAnalysis/CombinedLimit/interface
+
+In the HiggsAnalysis/CombinedLimit/src folder modify the following files:
+
+--> classes.h       : add the following lines:  
+                                                #include "HiggsAnalysis/CombinedLimit/interface/RooDijet5ParamBinPdf.h"
+                                                #include "HiggsAnalysis/CombinedLimit/interface/RooAtlas5ParamBinPdf.h"
+                                                #include "HiggsAnalysis/CombinedLimit/interface/RooModDijet5ParamBinPdf.h"
+
+--> classes_def.xml : add the following lines:  	
+                                                        <class name="RooDijet5ParamBinPdf" />
+                                                        <class name="RooAtlas5ParamBinPdf" /> 
+                                                        <class name="RooModDijet5ParamBinPdf" /> 
+
+
+cd back to $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit and make a clean build:
+ 
+cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit 
+scramv1 b clean; scramv1 b
+
+
+3) Git clone CombineHarvester/
+
+cd $CMSSW_BASE/src/
+git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+cd CombineHarvester/
+git fetch origin
+git checkout v3.0.0-pre1
+scramv1 b clean; scramv1 b
+
+The following changes concern crab job submissions:
+
+In HiggsAnalysis/CombinedLimit/python/tool_base/crab.py:
+L.15    -> config.JobType.psetName = os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/do_nothing_cfg.py"
+L.17-21 -> config.JobType.inputFiles = [
+    os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/FrameworkJobReport.xml",
+    os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/copyRemoteWorkspace.sh",
+    os.environ["CMSSW_BASE"] + "/bin/" + os.environ["SCRAM_ARCH"] + "/combine",
+]
+
+In HiggsAnalysis/CombinedLimit/python/tool_base/CombineToolBase.py:
+L.381 -> do_nothing_script = open(os.environ["CMSSW_BASE"] + "/src/CombineHarvester/CombineTools/scripts/do_nothing_cfg.py", "w")
+
+.
+.
+.
+.
+
+After all the above go to $CMSSW_BASE/src/ and make a clean build:
+scramv1 b clean; scramv1 b
+
+
+From now on, main work directory is the $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
+
+
+
+================================================ Run analyzer ================================================
+
+cd $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
+./scripts/make_rootNtupleClass.sh -f /path/to/big/trees/big_tree.root -t dijets/events
+
+answer yes in the two questions (which ask you to overwrite the output files)
+
+This step will create the file rootNtupleClass.h in the include/ folder
+
+This command should be executed every time the stored variables in big trees change.
+
+-----------------------
+
+Run the latest 4jet analyzer:
+
+ln -sf analysisClass_4Jets_minDeltaR_AK4PUPPI.C src/analysisClass.C
+
+ls -l src/analysisClass.C
+
+to make sure that the link was successful. Then:
+
+make clean
+make
+
+(whenever you change the a .C (or .h) file you should always do "make clean", "make")
+No error message should appeared.
+
+-----------------------
+
+./main lists/path/to/list.txt config/cutFiles/cutFile_4jets_AK4PUPPI.txt dijets/events output/Name_of_file output/Name_of_file
+
+if it runs fine in the output/ folder the file Name_of_file_reduced_skim.root will appear.
+
+Always do "cmsenv" in the folder $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer whenever you start to work. 
