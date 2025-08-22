@@ -3,8 +3,9 @@
 
 In order to create a MiniAOD (or AOD) root file (to be used as input for fireworks) do as follows:
 
-cd in a CMSSW 
+cd in a CMSSW (the CMSSW version for which the dataset was produced)
 
+E.g.:
 CMSSW_10_2_X for Run2 pre-Legacy data
 CMSSW_10_6_X for Run2 Legacy data (UL)
 CMSSW_12_4_X for Run3 data
